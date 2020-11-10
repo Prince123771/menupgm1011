@@ -1,0 +1,55 @@
+
+import os
+os.system("tput setaf 6")
+print("\tWELCOME TO MENU-APP!!")
+os.system("tput setaf 7")
+print("\t---------------------")
+print("""
+Press 1 : to run date
+Press 2 : to get ipaddress
+Press 3 : to create directory
+Press 4 : to create web-page using Apache Web-Server
+""")
+a = input("Do u want to run the program remotely/locally(l/r):")
+ch = input("Enter your choice:")
+print(ch)
+if a =="local":
+  if int(ch) == 1:
+     os.system("date")
+  elif int(ch) == 2:
+     os.system("ifconfig enp0s3")
+
+  elif int(ch) == 3:
+     filename= input("Enter the file-name:")
+     os.system("mkdir {}".format(filename))
+
+  elif int(ch) == 4:
+     WebPage_Name = input("Enter the web-page name:")
+     os.system("yum install httpd")
+     os.system("vim {}".format(WebPage_Name))
+     os.system("cp {} /var/www/html".format(WebPage_Name))
+     os.system("systemctl start httpd")
+     os.system("firefox")
+  else:
+     print("Not Support")
+elif a =="remote":
+  ip = input("Enter remote ip :")
+  print(ip)
+  if int(ch) == 1:
+     os.system("ssh {} date".format(ip))
+  elif int(ch) == 2:
+     os.system("ssh {} ifconfig".format(ip))
+  elif int(ch) == 3:
+     filename= input("Enter the file-name")
+     os.system("ssh {} mkdir {}".format(ip,filename))
+  elif int(ch) == 4:
+     os.system("ssh {} date cal".format(ip))
+  else:
+     print("Not Support")
+else:
+     print("invalid number, enter no. b/w 0-4")
+
+
+
+
+    
