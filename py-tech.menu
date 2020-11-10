@@ -9,6 +9,8 @@ Press 1 : to run date
 Press 2 : to get ipaddress
 Press 3 : to create directory
 Press 4 : to create web-page using Apache Web-Server
+Press 5 : to start Docker-Services.
+
 """)
 a = input("Do u want to run the program remotely/locally(l/r):")
 ch = input("Enter your choice:")
@@ -30,6 +32,9 @@ if a =="local":
      os.system("cp {} /var/www/html".format(WebPage_Name))
      os.system("systemctl start httpd")
      os.system("firefox")
+  elif int(ch) == 5:
+     image_name = input("Enter an image name:")
+     os.system("docker run -t -i {}".format(image_name))
   else:
      print("Not Support")
 elif a =="remote":
